@@ -1,4 +1,18 @@
+receivers:
+  otlp:
+    protocols:
+      grpc: {}
+
+processors:
+  memlim: {}
+
+exporters:
+  debug:
+    verbosity: normal
+
 service:
-  telemetry:
-    logs:
-      level: "info"
+  pipelines:
+    metrics:
+      receivers: [otlp]
+      processors: [memlim]
+      exporters: [debug]
