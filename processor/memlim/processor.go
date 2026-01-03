@@ -29,5 +29,6 @@ func (p *memlimProcessor) Shutdown(ctx context.Context) error {
 }
 
 func (p *memlimProcessor) ConsumeMetrics(ctx context.Context, md pmetric.Metrics) error {
+	p.logger.Info("🔵 ConsumeMetrics called")
 	return p.next.ConsumeMetrics(ctx, md)
 }
